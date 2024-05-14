@@ -25,6 +25,19 @@ get("/goodbye") do
     erb(:square_results)
   end
 
+  get '/square_root/new' do
+    erb(:new_square_root_calc)
+  end
+
+  get '/square_root/result' do
+    @the_num = params.fetch("number").to_f
+  
+    # Calculate the square root
+    @the_result = Math.sqrt(@the_num)
+
+    erb(:square_root_results)
+  end
+
 get("/") do
   "
   <h1>Welcome to your Sinatra App!</h1>
