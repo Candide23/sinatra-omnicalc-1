@@ -50,19 +50,13 @@ get("/goodbye") do
     numerator = @the_apr *  @the_principal
     denominator = 1 - (1 + @the_apr) ** -@the_years
     @the_payment = (numerator / denominator).round(2)
+    @interest_rate = (@the_apr *12 * 100).round(4)
 
-
-
+    erb(:payment_result)
   end
 
-  apr = params[:apr].to_f / 100 / 12
-  n = params[:years].to_i * 12
-  pv = params[:present_value].to_f
   
-  numerator = apr * pv
-  denominator = 1 - (1 + apr) ** -n
-  @payment = (numerator / denominator).round(2)
-  @interest_rate = (apr * 12 * 100).round(4)
+  
 
 get("/") do
   "
