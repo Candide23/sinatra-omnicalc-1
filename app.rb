@@ -55,6 +55,22 @@ get("/goodbye") do
     erb(:payment_result)
   end
 
+
+  get '/random/new' do
+   erb(:new_random_calc)
+  end
+
+  get '/random/result' do
+
+    @min = params.fetch("min").to_f
+    @max = params.fetch("max").to_f
+
+    @random_num = rand(@min..@max)
+
+
+    erb(:random_result)
+   end
+
   
   
 
